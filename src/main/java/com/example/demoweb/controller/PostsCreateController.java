@@ -1,4 +1,4 @@
-package com.example.demoweb;
+package com.example.demoweb.controller;
 
 import com.example.demoweb.model.Post;
 import com.example.demoweb.service.PostService;
@@ -24,7 +24,8 @@ public class PostsCreateController {
 
     @RequestMapping(path = "/new", method = RequestMethod.POST)
     public String doCreate(@ModelAttribute("text") String text) {
-        postService.create(new Post(text, new Date()));
+        var index = postService.listAllPosts().size();
+        postService.create(new Post(index, text, new Date()));
         return "redirect:/";
     }
 }

@@ -4,6 +4,7 @@ import com.example.demoweb.model.Post;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -13,10 +14,11 @@ public class PostService {
     List<Post> posts;
 
     public PostService() {
+        var texts = Arrays.asList("I", "Hate", "Java");
         posts = new ArrayList<>();
-        posts.add(new Post("I", new Date()));
-        posts.add(new Post("Hate", new Date()));
-        posts.add(new Post("Java", new Date()));
+        for (Integer i = 0; i < texts.size(); i++) {
+            posts.add(new Post(i, texts.get(i), new Date()));
+        }
     }
 
     public List<Post> listAllPosts() {
