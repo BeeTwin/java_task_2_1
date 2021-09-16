@@ -24,8 +24,7 @@ public class PostsCreateController {
 
     @RequestMapping(path = "/new", method = RequestMethod.POST)
     public String doCreate(@ModelAttribute("text") String text) {
-        var index = postService.listAllPosts().size();
-        postService.create(new Post(index, text, new Date()));
+        postService.create(text);
         return "redirect:/";
     }
 }
